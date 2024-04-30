@@ -62,7 +62,15 @@ function App() {
 
   return (
     <main className="app-container">
-      <h1>匿名掲示板（仮アプリ）</h1>
+      <h1>ミス研ライブラリー</h1>
+      <h2>投稿一覧</h2>
+      <div className="post-list">
+        {posts.map((post) => (
+          <div key={post.id} className="post-list__item">
+            <button type = "button" className="post-list__item__content">{post.content}</button>
+          </div>
+        ))}
+      </div>
       <h2>新規投稿</h2>
       <form onSubmit={handleSubmit} className="post-form">
         <textarea name="content" rows="5" className="post-form__textarea" />
@@ -70,17 +78,7 @@ function App() {
           <SendIcon />
         </button>
       </form>
-      <h2>投稿一覧</h2>
-      <div className="post-list">
-        {posts.map((post) => (
-          <div key={post.id} className="post-list__item">
-            <span className="post-list__item__content">{post.content}</span>
-            <span className="post-list__item__date">
-              {new Date(post.created_at).toLocaleString('ja-JP')}
-            </span>
-          </div>
-        ))}
-      </div>
+      
     </main>
   );
 }
